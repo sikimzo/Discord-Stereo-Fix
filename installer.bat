@@ -4,7 +4,6 @@ title SIKIMZO STEREO INSTALLER V2.0.0
 setlocal EnableDelayedExpansion
 
 set CURRENT_VERSION=V2.0.0
-set UPDATE_MSG=
 
 :: ================= ANSI COLORS =================
 set ESC=
@@ -14,12 +13,11 @@ set GREEN=%ESC%[32m
 set YELLOW=%ESC%[33m
 set CYAN=%ESC%[36m
 
-
 :MENU
 cls
 echo %CYAN%===============================%RESET%
 echo %CYAN%^|   STEREO INSTALLER V2.0.0   ^|%RESET%
-echo %CYAN%^|        made by sikimzo      ^|%RESET%
+echo %CYAN%^|       made by sikimzo       ^|%RESET%
 echo %CYAN%===============================%RESET%
 echo.
 echo Select Your Discord For Installation
@@ -111,3 +109,4 @@ xcopy "%TMP%\stereo-uninstall-main\*" "%TARGET%\" /E /H /Y >nul
 echo Stereo uninstalled
 timeout /t 3 /nobreak >NUL
 exit
+
