@@ -8,7 +8,7 @@ New stereo installer with node 15,292 kb, No need to replace ffmpeg.dll anymore 
 
 3. run the Installer.bat file and select your discord (btw u can select discordptb and canary)
 
-4. then open your Discord and you will be see that all the issyes are fixed
+4. then open your Discord and you will be see that all the issues are fixed
 
 # 📃 Changelog
 ```yml
@@ -21,4 +21,4 @@ v1.0.0 - the first sikimzo stereo fix module was built # 9/10/2025
 my discord: `sikimzo`
 if you have any issue just tell me on my discord dm
 
-my server: https://discord.gg/HjYyDQx4kK (Vault)
+My Server: https://discord.gg/HjYyDQx4kK (Vault)
