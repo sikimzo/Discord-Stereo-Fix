@@ -18,7 +18,7 @@ v1.0.0 - the first sikimzo stereo fix module was built # 9/10/2025
 ```
 
 # ☕ Support & Information
-my discord: `sikimzo`
+my discord: `sikimzo` (banned)
 if you have any issue just tell me on my discord dm
 
 My Server: https://discord.gg/HjYyDQx4kK (Vault)
