@@ -1,4 +1,4 @@
-# 🍌 New Discord Stereo Fix
+# 🔊 New Discord Stereo Fix
 New stereo installer with node 13,940 kb, No need to replace ffmpeg.dll anymore  and Discord media (mp3 , mp4 and other discord sounds)  issues fixed
 
 # 💻 Installation steps
