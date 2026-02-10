@@ -1,9 +1,9 @@
 @echo off
 chcp 65001 >nul
-title SIKIMZO STEREO INSTALLER V2.0.0
+title SIKIMZO STEREO INSTALLER V3.0.0
 setlocal EnableDelayedExpansion
 
-set CURRENT_VERSION=V2.0.0
+set CURRENT_VERSION=V3.0.0
 
 :: ================= ANSI COLORS =================
 set ESC=
@@ -16,7 +16,7 @@ set CYAN=%ESC%[36m
 :MENU
 cls
 echo %CYAN%===============================%RESET%
-echo %CYAN%^|   STEREO INSTALLER V2.0.0   ^|%RESET%
+echo %CYAN%^|   STEREO INSTALLER V3.0.0   ^|%RESET%
 echo %CYAN%^|       made by sikimzo       ^|%RESET%
 echo %CYAN%===============================%RESET%
 echo.
@@ -73,3 +73,4 @@ if exist "%~dp0ffmpeg.dll" copy /Y "%~dp0ffmpeg.dll" "%FFMPEG%" >nul
 echo Installation completed
 timeout /t 3 /nobreak >NUL
 exit
+
