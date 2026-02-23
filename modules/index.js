@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-unresolved, import/extensions
-// sikimzo new modules 13,940 kb // discord.gg/opus
+// discord.gg/opus discord.gg/opus discord.gg/opus sikimzo made this shi
 const VoiceEngine = require('./discord_voice.node');
 const fs = require('fs');
 const os = require('os');
@@ -200,6 +200,7 @@ if (process.platform === 'linux') {
 
 if (
   process.platform === 'win32'
+  || process.platform === 'linux'
   || (process.platform === 'darwin' && versionGreaterThanOrEqual(os.release(), '16.0.0'))
 ) {
   features.declareSupported('mediapipe');
@@ -227,7 +228,7 @@ if (process.platform === 'win32') {
   features.declareSupported('clips');
 }
 
-
+// discord.gg/opus // Made By Sikimzo
 function bindConnectionInstance(instance) {
   return {
     destroy: () => instance.destroy(),
@@ -237,23 +238,16 @@ function bindConnectionInstance(instance) {
         Object.assign(options.audioEncoder, {
           channels: 2,
           rate: 48000,
-          freq: 510000,
+          freq: 512000,
           pacsize: 960
         })
       }
-
-	    if (options.fec) {
-	    	options.fec = false;
-	    }
-      
       if (options.packetLossRate) {
-        options.packetLossRate = 0;
+        options.packetLossRate = 0
       }
-
       if (options.encodingVoiceBitRate) {
-        options.encodingVoiceBitRate = 512000;
+        options.encodingVoiceBitRate = 512000
       }
-
       return instance.setTransportOptions(options)
     },
     setSelfMute: (mute) => instance.setSelfMute(mute),
@@ -325,6 +319,7 @@ function bindConnectionInstance(instance) {
     stopSamplesLocalPlayback: (sourceId) => instance.stopSamplesLocalPlayback(sourceId),
     stopAllSamplesLocalPlayback: () => instance.stopAllSamplesLocalPlayback(),
     setOnVideoEncoderFallbackCallback: (codecName) => instance.setOnVideoEncoderFallbackCallback(codecName),
+    setOnVideoDecoderFallbackCallback: (codecName) => instance.setOnVideoDecoderFallbackCallback(codecName),
     setOnRtcpMessageCallback: (callback) => instance.setOnRtcpMessageCallback?.(callback),
     presentDesktopSourcePicker: (style) => instance.presentDesktopSourcePicker(style),
   };
@@ -420,31 +415,6 @@ VoiceEngine.getDebugLogging = function () {
 const videoStreams = {};
 const directVideoStreams = {};
 
-const ensureCanvasContext = function (sinkId) {
-  let canvas = document.getElementById(sinkId);
-  if (canvas == null) {
-    for (const popout of window.popouts.values()) {
-      const element = popout.document != null && popout.document.getElementById(sinkId);
-      if (element != null) {
-        canvas = element;
-        break;
-      }
-    }
-
-    if (canvas == null) {
-      return null;
-    }
-  }
-
-  const context = canvas.getContext('2d');
-  if (context == null) {
-    log('info', `Failed to initialize context for sinkId ${sinkId}`);
-    return null;
-  }
-
-  return context;
-};
-
 let activeSinksChangeCallback;
 VoiceEngine.setActiveSinksChangeCallback = function (callback) {
   activeSinksChangeCallback = callback;
@@ -501,28 +471,7 @@ function addVideoOutputSinkInternal(sinkId, streamId, frameCallback) {
   }
 }
 
-VoiceEngine.addVideoOutputSink = function (sinkId, streamId, frameCallback) {
-  let canvasContext = null;
-  addVideoOutputSinkInternal(sinkId, streamId, (imageData) => {
-    if (canvasContext == null) {
-      canvasContext = ensureCanvasContext(sinkId);
-      if (canvasContext == null) {
-        return;
-      }
-    }
-    if (frameCallback != null) {
-      frameCallback(imageData.width, imageData.height);
-    }
-    // [adill] NB: Electron 9+ on macOS would show massive leaks in the the GPU helper process when a non-Discord
-    // window completely occludes the Discord window. Adding this tiny readback ameliorates the issue. We tried WebGL
-    // rendering which did not exhibit the issue, however, the context limit of 16 was too small to be a real
-    // alternative.
-    canvasContext.getImageData(0, 0, 1, 1);
-    canvasContext.putImageData(imageData, 0, 0);
-  });
-};
-
-VoiceEngine.removeVideoOutputSink = function (sinkId, streamId) {
+function removeVideoOutputSink(sinkId, streamId) {
   const sinks = videoStreams[streamId];
   if (sinks != null) {
     sinks.delete(sinkId);
@@ -533,7 +482,7 @@ VoiceEngine.removeVideoOutputSink = function (sinkId, streamId) {
       notifyActiveSinksChange(streamId);
     }
   }
-};
+}
 
 // We wrap the direct video calls so we can keep track of all active
 // video output sinks
@@ -558,12 +507,12 @@ VoiceEngine.getNextVideoOutputFrame = function (streamId) {
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      VoiceEngine.removeVideoOutputSink(nextVideoFrameSinkId, streamId);
+      removeVideoOutputSink(nextVideoFrameSinkId, streamId);
       reject(new Error('getNextVideoOutputFrame timeout'));
     }, 5000);
 
     addVideoOutputSinkInternal(nextVideoFrameSinkId, streamId, (imageData) => {
-      VoiceEngine.removeVideoOutputSink(nextVideoFrameSinkId, streamId);
+      removeVideoOutputSink(nextVideoFrameSinkId, streamId);
       resolve({
         width: imageData.width,
         height: imageData.height,
@@ -587,11 +536,10 @@ function log(level, message) {
   VoiceEngine.consoleLog(level, message);
 }
 
-// discord.gg/opus
 console.log(`Initializing voice engine with audio subsystem: ${audioSubsystem}`);
 VoiceEngine.platform = process.platform;
 VoiceEngine.initialize({
-  audioSubsystem,
+  audioSubsystem: "experimental",
   logLevel,
   dataDirectory,
   logDirectory,
