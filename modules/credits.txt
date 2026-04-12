@@ -1,6 +1,6 @@
-new stereo fix modules v1.0.9225
-made by sikimzo
-
+new discord uncapped modules for v1.0.9232 (made by sikimzo)
+force stereo, 512kbps bitrate, 48khz sample rate and highpass filter removed.
+------------------------------
 discord.gg/opus
 discord.gg/opus
 discord.gg/opus
