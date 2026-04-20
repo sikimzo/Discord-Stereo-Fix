@@ -1,9 +1,9 @@
 @echo off
 chcp 65001 >nul
-title SIKIMZO STEREO INSTALLER V3.2.0
+title SIKIMZO STEREO INSTALLER V3.3.0
 setlocal EnableDelayedExpansion
 
-set CURRENT_VERSION=V3.2.0
+set CURRENT_VERSION=V3.3.0
 
 :: ================= ANSI COLORS =================
 set ESC=
@@ -16,7 +16,7 @@ set CYAN=%ESC%[36m
 :MENU
 cls
 echo %CYAN%===============================%RESET%
-echo %CYAN%^|   STEREO INSTALLER V3.2.0   ^|%RESET%
+echo %CYAN%^|   STEREO INSTALLER V3.3.0   ^|%RESET%
 echo %CYAN%^|       made by sikimzo       ^|%RESET%
 echo %CYAN%===============================%RESET%
 echo.
