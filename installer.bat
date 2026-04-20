@@ -16,7 +16,7 @@ set CYAN=%ESC%[36m
 :MENU
 cls
 echo %CYAN%===============================%RESET%
-echo %CYAN%^|   STEREO INSTALLER V3.3.0   ^|%RESET%
+echo %CYAN%^|   STEREO INSTALLER %CURRENT_VERSION%  ^|%RESET%
 echo %CYAN%^|       made by sikimzo       ^|%RESET%
 echo %CYAN%===============================%RESET%
 echo.
