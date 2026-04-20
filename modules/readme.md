@@ -1,4 +1,4 @@
-New Discord Stereo Fix v3.1 - discord v1.0.9225
+New Discord Stereo Fix v3.3 - discord v1.0.9233
 
 No need to replace ffmpeg.dll anymore and Discord media (mp3 , mp4 and other discord sounds) issues fixed
 
