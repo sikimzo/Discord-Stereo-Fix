@@ -1,4 +1,4 @@
-# 🔊 New Discord Stereo Fix (Last Update 4/12/2026)
+# 🔊 New Discord Stereo Fix (Last Update 4/20/2026)
 A Simple Stereo Installer For Discord
 
 ## 💻 Installation steps
@@ -24,7 +24,8 @@ then open your Discord and you will be see that all the issues are fixed
 <summary>show</summary>
 
 ```yml
-v3.2.0 - New modules stereo fix modules for v1.0.9232. # 4/12/2026
+v3.3.0 - New stereo fix modules for v1.0.9233. # 4/20/2026
+v3.2.0 - New stereo fix modules for v1.0.9232. # 4/12/2026
 v3.1.0 - New modules for Discord v1.0.9225 and a fix for the max bitrate issue. # 2/23/2026
 v3.0.0 - Updated for the new version of discord and the crash issue when joining a voice has been fixed. # 2/10/2026
 v2.0.0 - New stereo fix node created (15,292 kb) and ffmpeg.dll issue fixed. # 12/20/2025
