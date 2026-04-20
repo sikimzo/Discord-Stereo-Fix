@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-unresolved, import/extensions
-// made by sikimzo - discord.gg/opus discord.gg/opus discord.gg/opus
+// made by sikimzo // discord.gg/opus
 const VoiceEngine = require('./discord_voice.node');
 const fs = require('fs');
 const os = require('os');
@@ -558,5 +558,12 @@ VoiceEngine.initialize({
   offloadAdmControls,
   asyncVideoInputDeviceInit,
 });
+
+VoiceEngine.setupKrispPath = function () {
+  const krispPath = DiscordNative.nativeModules.getModulePath('discord_krisp');
+  if (krispPath != null) {
+    VoiceEngine.setKrispPath(krispPath);
+  }
+};
 
 module.exports = VoiceEngine;
