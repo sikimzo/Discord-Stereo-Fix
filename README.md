@@ -1,4 +1,4 @@
-# 🔊 New Discord Stereo Fix (Last Update 6/3/2026)
+# 🔊 New Discord Stereo Fix (Last Update 6/03/2026)
 A Simple Stereo Installer For Discord
 
 ## 💻 Installation steps
