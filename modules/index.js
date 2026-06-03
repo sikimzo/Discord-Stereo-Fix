@@ -1,4 +1,4 @@
-// discord v1.0.9239 stereo fix modules
+// discord v1.0.9240
 // made by sikimzo
 // discord.gg/opus
 
@@ -203,38 +203,32 @@ if (process.platform === 'win32') {
     features.declareSupported('voice_bypass_system_audio_input_processing');
     features.declareSupported('clips');
 }
-
-// sikimzo made this uncapped modules // discord.gg/opus  discord.gg/opus
 function bindConnectionInstance(instance) {
     return {
         destroy: () => instance.destroy(),
+
         setTransportOptions: (options) => {
-        // Discord audio encoder options
         if (options.audioEncoder) {
             Object.assign(options.audioEncoder, {
-            channels: 2,   // stereo
-            rate: 48000,   // sample rate 48khz
-            freq: 512000,  // frequency 512k
-            pacsize: 960   // packet size
+            channels: 2,  // stereo       (options: mono = 1, stereo = 2)
+            rate: 48000,  // sample rate  (options: 8000, 16000, 32000, 44100, 48000)
+            freq: 128000, // frequency    (options: 512000, 256000, 128000, 64000)
+            pacsize: 960  // packet size  (options: 120, 240, 480, 960, 1920, 2880)
             })
         }
-        
-        // FEC disabled
+
         if (options.fec) {
             options.fec = false
         }
 
-        // Packet loss rate
         if (options.packetLossRate) {
             options.packetLossRate = 0
         }
 
-        // Opus Encoder BitRate
         if (options.encodingVoiceBitRate) {
-            options.encodingVoiceBitRate = 512000 // 510000
+            options.encodingVoiceBitRate = 510000
         }
 
-        // discord.gg/opus
         return instance.setTransportOptions(options)
         },
         setSelfMute: (mute) => instance.setSelfMute(mute),
@@ -463,7 +457,7 @@ function log(level, message) {
 console.log(`Initializing voice engine with audio subsystem: ${audioSubsystem}`);
 VoiceEngine.platform = process.platform;
 VoiceEngine.initialize({
-    audioSubsystem: "experimental", // Audio subsystem experimental or legacy
+    audioSubsystem,
     logLevel,
     dataDirectory,
     logDirectory,
@@ -488,4 +482,3 @@ VoiceEngine.setupMLPath = function () {
     }
 };
 module.exports = VoiceEngine;
-// discord.gg/opus
