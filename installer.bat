@@ -5,7 +5,7 @@ setlocal EnableDelayedExpansion
 
 set CURRENT_VERSION=V3.4.1
 
-:: ================= ANSI COLORS =================
+:: ================ ANSI COLORS ================
 set ESC=
 set RESET=%ESC%[0m
 set RED=%ESC%[31m
