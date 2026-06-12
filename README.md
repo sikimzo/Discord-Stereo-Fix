@@ -17,7 +17,8 @@ then open your Discord and you will be see that all the issues are fixed
 | Maximum bitrate (512Kbps) | ✅ |
 | HighPassFilter removed | ✅ |
 | Uncapped gain & stereo | ✅ |
-| Filterless & raw audio | ❌ |
+| Filterless & raw audio | ✅ |
+| Gain Multiplier | ❌ |
 
 ## 📃 Changelogs
 <details>
