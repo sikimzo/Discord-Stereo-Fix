@@ -46,7 +46,6 @@ if not defined VOICE (
 )
 
 set TARGET=%VOICE%\discord_voice
-set FFMPEG=%APP%\ffmpeg.dll
 
 :: Backup
 set HAS_BACKUP=0
@@ -66,9 +65,6 @@ for %%F in ("%TARGET%\*") do if /I not "%%~xF"==".zip" del /f /q "%%F" >nul 2>&1
 
 :: Copy modules
 xcopy "%~dp0modules\*" "%TARGET%\" /E /H /Y >nul
-
-:: Replace ffmpeg
-if exist "%~dp0ffmpeg.dll" copy /Y "%~dp0ffmpeg.dll" "%FFMPEG%" >nul
 
 echo Installation completed
 timeout /t 3 /nobreak >NUL
