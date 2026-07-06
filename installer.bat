@@ -50,20 +50,6 @@ if not defined VOICE (
 set TARGET=%VOICE%\discord_voice
 
 :: ================== BACKUP ==================
-if not exist "%TARGET%" (
-    echo discord_voice folder not found.
-    pause
-    exit /b
-)
-
-if exist "%TARGET%\backup_*.zip" (
-    echo Backup already exists, skipping...
-) else (
-    echo %GREEN%[+] Creating backup...%RESET%
-
-    powershell -NoProfile -Command ^
-    "Compress-Archive -Path '%TARGET%\*' -DestinationPath '%TARGET%\backup_%DATE:/=-%_%TIME::=-%.zip' -Force"
-)
 
 :: Clean
 for %%F in ("%TARGET%\*") do if /I not "%%~xF"==".zip" del /f /q "%%F" >nul 2>&1
