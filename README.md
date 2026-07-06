@@ -26,7 +26,7 @@ then open your Discord and you will be see that all the issues are fixed
 <summary>show</summary>
 
 ```yml
-v3.5.1 - Fixed an issue where the backup process could fail bc of invalid PowerShell arguments.
+v3.5.1 - updated installer.bat (Fixed backup system.)
 v3.5.0 - new uncapped modules for v1.0.9244.
 v3.4.2 - ffmpeg.dll and installer.bat updated. 
 v3.4.1 - New stereo fix modules for v1.0.9239. # 6/3/2026
