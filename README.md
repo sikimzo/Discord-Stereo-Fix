@@ -1,4 +1,4 @@
-# 🔊 New Discord Stereo Fix (Last Update 6/03/2026)
+# 🔊 New Discord Stereo Fix (Last Update 7/06/2026)
 A Simple Stereo Installer For Discord
 
 ## 💻 Installation steps
@@ -25,6 +25,8 @@ then open your Discord and you will be see that all the issues are fixed
 <summary>show</summary>
 
 ```yml
+v3.5.0 - new uncapped modules for v1.0.9244.
+v3.4.2 - ffmpeg.dll and installer.bat updated. 
 v3.4.1 - New stereo fix modules for v1.0.9239. # 6/3/2026
 v3.4.0 - New stereo fix modules for v1.0.9239. # 5/30/2026
 v3.3.0 - New stereo fix modules for v1.0.9233. # 4/20/2026
@@ -40,5 +42,3 @@ v1.0.0 - The first sikimzo stereo fix module was built. # 9/10/2025
 
 ## ☕ Support & Information
 my discord: a64p (sikimzo) if you have any issue just tell me on my discord dm
-
-My Server: https://discord.gg/opus (Vault)
