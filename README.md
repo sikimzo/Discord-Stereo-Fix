@@ -15,6 +15,7 @@ then open your Discord and you will be see that all the issues are fixed
 |:------:|:-----:|
 | Force stereo | ✅ |
 | Maximum bitrate (512Kbps) | ✅ |
+| Force MaxBitrate & Opus Celt Mode | ✅ |
 | HighPassFilter removed | ✅ |
 | Uncapped gain & stereo | ✅ |
 | Filterless & raw audio | ✅ |
