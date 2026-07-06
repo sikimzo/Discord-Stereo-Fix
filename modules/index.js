@@ -1,6 +1,4 @@
-// discord v1.0.9240
 // made by sikimzo
-// discord.gg/opus
 
 "use strict";
 const VoiceEngine = require('./discord_voice.node');
@@ -202,6 +200,7 @@ if (process.platform === 'win32') {
     features.declareSupported('voice_subsystem_deferred_switch');
     features.declareSupported('voice_bypass_system_audio_input_processing');
     features.declareSupported('clips');
+    features.declareSupported('clips_thumbnail');
 }
 function bindConnectionInstance(instance) {
     return {
@@ -370,9 +369,9 @@ function notifyActiveSinksChange(streamId) {
     activeSinksChangeCallback(streamId, hasVideoStreamSink || hasDirectVideoStreamSink);
 }
 const setVideoOutputSink = VoiceEngine.setVideoOutputSink;
-const clearVideoOutputSink = (streamId) => {
+function clearVideoOutputSink(streamId) {
     setVideoOutputSink(streamId);
-};
+}
 const signalVideoOutputSinkReady = VoiceEngine.signalVideoOutputSinkReady;
 delete VoiceEngine.setVideoOutputSink;
 delete VoiceEngine.signalVideoOutputSinkReady;
@@ -385,7 +384,7 @@ function addVideoOutputSinkInternal(sinkId, streamId, frameCallback) {
     sinks.set(sinkId, frameCallback);
     if (needsToSubscribeToFrames) {
         log('info', `Subscribing to frames for streamId ${streamId}`);
-        const onFrame = (imageData) => {
+        function onFrame(imageData) {
             const sinks = videoStreams[streamId];
             if (sinks != null) {
                 for (const callback of sinks.values()) {
@@ -395,7 +394,7 @@ function addVideoOutputSinkInternal(sinkId, streamId, frameCallback) {
                 }
             }
             signalVideoOutputSinkReady(streamId);
-        };
+        }
         setVideoOutputSink(streamId, onFrame, true);
         notifyActiveSinksChange(streamId);
     }
