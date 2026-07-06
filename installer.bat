@@ -1,9 +1,9 @@
 @echo off
 chcp 65001 >nul
-title SIKIMZO STEREO INSTALLER V3.4.2
+title SIKIMZO STEREO INSTALLER V3.5.0
 setlocal EnableDelayedExpansion
 
-set CURRENT_VERSION=V3.4.2
+set CURRENT_VERSION=V3.5.0
 
 :: ================ ANSI COLORS ================
 set ESC=
