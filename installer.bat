@@ -1,9 +1,9 @@
 @echo off
 chcp 65001 >nul
-title SIKIMZO STEREO INSTALLER V3.5.0
+title SIKIMZO STEREO INSTALLER V3.5.1
 setlocal EnableDelayedExpansion
 
-set CURRENT_VERSION=V3.5.0
+set CURRENT_VERSION=V3.5.1
 
 :: ================ ANSI COLORS ================
 set ESC=
@@ -21,6 +21,7 @@ echo %CYAN%^|       made by sikimzo       ^|%RESET%
 echo %CYAN%===============================%RESET%
 echo.
 echo Select Your Discord For Installation
+echo.
 echo [1] Discord
 echo [2] Discord PTB
 echo [3] Discord Canary
@@ -30,6 +31,7 @@ set /p choice=Enter Your Choice:
 if "%choice%"=="1" set BASE=%LOCALAPPDATA%\Discord& set EXE=discord.exe& goto INSTALL
 if "%choice%"=="2" set BASE=%LOCALAPPDATA%\DiscordPTB& set EXE=discordptb.exe& goto INSTALL
 if "%choice%"=="3" set BASE=%LOCALAPPDATA%\DiscordCanary& set EXE=discordcanary.exe& goto INSTALL
+if "%choice%"=="4" goto RESTORE_MENU
 
 :: ================= INSTALL =================
 :INSTALL
@@ -48,17 +50,20 @@ if not defined VOICE (
 set TARGET=%VOICE%\discord_voice
 
 :: Backup
-set HAS_BACKUP=0
-for %%B in ("%TARGET%\backup_*.zip") do set HAS_BACKUP=1
-
-if "%HAS_BACKUP%"=="0" (
-    echo %GREEN%[+] Creating backup...%RESET%
-    powershell -command ^
-    "Compress-Archive '%TARGET%\*','%FFMPEG%' '%TARGET%\backup_%DATE:/=-%_%TIME::=-%.zip'"
-) else (
-    echo %YELLOW%Backup already exists, skipping backup%RESET%
+if not exist "%TARGET%" (
+    echo discord_voice folder not found.
+    pause
+    exit /b
 )
 
+if exist "%TARGET%\backup_*.zip" (
+    echo Backup already exists, skipping...
+) else (
+    echo %GREEN%[+] Creating backup...%RESET%
+
+    powershell -NoProfile -Command ^
+    "Compress-Archive -Path '%TARGET%\*' -DestinationPath '%TARGET%\backup_%DATE:/=-%_%TIME::=-%.zip' -Force"
+)
 
 :: Clean
 for %%F in ("%TARGET%\*") do if /I not "%%~xF"==".zip" del /f /q "%%F" >nul 2>&1
@@ -69,5 +74,3 @@ xcopy "%~dp0modules\*" "%TARGET%\" /E /H /Y >nul
 echo Installation completed
 timeout /t 3 /nobreak >NUL
 exit
-
-
