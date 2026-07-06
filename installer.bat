@@ -49,7 +49,7 @@ if not defined VOICE (
 
 set TARGET=%VOICE%\discord_voice
 
-:: Backup
+:: ================== BACKUP ==================
 if not exist "%TARGET%" (
     echo discord_voice folder not found.
     pause
