@@ -25,3 +25,4 @@ then open your Discord and you will be see that all the issues are fixed
 
 ## ☕ Support & Information
 my discord: a64p (sikimzo)
+https://discord.gg/PgKq2HzDGg
