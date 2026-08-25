@@ -1,3 +1,4 @@
+// made by sikimzo
 "use strict";
 const VoiceEngine = require('./discord_voice.node');
 const fs = require('fs');
